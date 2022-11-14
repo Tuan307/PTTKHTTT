@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>search ncc</title>
+
+  </head>
+  <body>
+    <h3>Tìm kiếm nhà cung cấp</h3>
+    <form action="" method="get" >
+      <div class="input-group">
+        <span class="input-group-text" id="inputGroup-sizing-default">Tên:</span>
+      <input class="form-control" type="text" name="keyword" placeholder="name" />
+       <br/>
+      <br />
+      <button class="btn btn-outline-secondary" type="submit">search</button>
+      <br />
+    </form>
+    <br/>
+    <table class="table" border="1px">
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col">Email</th>
+        <th scope="col">Số điện thoại</th>
+      </tr>
+     
+      <tr th:each="item : ${listNcc}">
+        <td scope="row" th:utext="${item.id}"></td>
+        <td th:utext="${item.ten}" ></td>
+        <td th:utext="${item.diachi}"></td>
+        <td th:utext="${item.email}"></td>
+        <td th:utext="${item.sodienthoai}"></td>
+        <td><a th:href="@{'/managencc/edit/'+ ${item.id}}">edit</a></td>
+        <td><a th:href="@{'/managencc/delete/'+ ${item.id}}">delete</a></td>
+      </tr>
+    
+
+    </table>
+  </body>
+</html>

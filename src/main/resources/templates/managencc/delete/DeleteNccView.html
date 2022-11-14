@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+    <title>Xóa ncc</title>
+</head>
+<body>
+      
+    <form action="" method="post"  class="input-group mb-3" >
+            <h3 >Xóa Nhà cung cấp</h3>
+            <h3>Bạn có chắc chắn muốn xóa nhà cung cấp: </h3>
+         <div class="input-group">
+            <span class="input-group-text" id="inputGroup-sizing-default">Tên:</span>
+        <input type="text" class="form-control" name="ten" th:value="${nhaCungCap.ten}" placeholder="name">
+         </div>
+        <br>
+        <div class="input-group">
+        <span class="input-group-text" id="inputGroup-sizing-default">địa chỉ: </span>
+        <input type="text" class="form-control" name="diachi" th:value="${nhaCungCap.diachi}" placeholder="address">
+        </div>
+        <br>
+        <div class="input-group">
+        <span class="input-group-text" id="inputGroup-sizing-default">email: </span>
+        <input type="email" class="form-control" name="email" th:value="${nhaCungCap.email}" placeholder="email">
+        </div>
+        <br>
+        <div class="input-group">
+        <span class="input-group-text" id="inputGroup-sizing-default">số điện thoại: </span>
+        <input type="text" class="form-control" name="sodienthoai" th:value="${nhaCungCap.sodienthoai}" placeholder="phone number">
+        </div>
+        <br>
+        <button type="submit">Xóa</button>
+		
+    </form>
+    <a th:href="@{/managencc}"><button type="submit">Hủy</button></a>
+</body>
+</html>
