@@ -9,22 +9,22 @@
   </head>
   <body>
 
-    <h3>Tìm kiếm trang phuc</h3>
+    <h3>Tìm kiếm trang phục</h3>
     <form action="" method="get" >
       <div class="input-group">
         <span class="input-group-text" id="inputGroup-sizing-default">Tên:</span>
       <input class="form-control" type="text" name="keyword" placeholder="name" />
       <br />
-      <button class="btn btn-outline-secondary" type="submit">search</button>
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
       <br />
     </form>
     <table class="table">
       <tr>
         <th scope="col">STT</th>
         <th scope="col">Tên</th>
-        <th scope="col">Gia</th>
-        <th scope="col">Xuat xu</th>
-        <th scope="col">Mo ta</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Xuất xứ</th>
+        <th scope="col">Mô tả</th>
       </tr>
       <th:block th:each="item : ${listPhim}">
       <tr>
@@ -33,7 +33,7 @@
         <td th:utext="${item.gia}" ></td>
         <td th:utext="${item.xuatxu}" ></td>
         <td th:utext="${item.mota}" ></td>
-        <td><a th:href="@{/nhaptp/{nccId}/{id}(id=${item.id}, nccId=${id})}"><button type="button" class="btn btn-outline-secondary" style="color: green;">Nhập</button></a></td>
+        <td><a th:href="@{/nhaptp/{nccId}/{id}(id=${item.id}, nccId=${id})}"><button type="button" class="btn btn-outline-secondary" style="color: green;">Nhập tp</button></a></td>
       </tr>
     </th:block>
 

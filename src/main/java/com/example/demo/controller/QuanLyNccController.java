@@ -25,6 +25,8 @@ public class QuanLyNccController {
     @Autowired
     private NhaCungCapDAO nhaCungCapDAO;
     
+   
+    
     @GetMapping("/managencc")
     public String getManage(){
         return "managencc/QuanLyThongTinNCCView";
@@ -60,13 +62,15 @@ public class QuanLyNccController {
         System.out.print("Hehe");
         return "redirect:/managencc/edit/search";
     }
-//    @GetMapping("/manage/delete/search")
-//    public String getDeleteSearch(@Param("keyword") String keyword,Model model){
-//        if(keyword == null) return "SearchDeleteNccView" ;
-//        List<NhaCungCap> listNcc = nhaCungCapDAO.findAllByTenContaining(keyword);
-//        model.addAttribute("listNcc", listNcc);
-//        return "SearchDeleteNccView";
-//    }
+    
+    @GetMapping("/managencc/delete/search")
+    public String getDeleteSearch(@Param("keyword") String keyword,Model model){
+        if(keyword == null) return "managencc/delete/TimKiemNCCView" ;
+        List<NhaCungCap> listNcc = nhaCungCapDAO.findAllByTenContaining(keyword);
+        model.addAttribute("listNcc", listNcc);
+        return "managencc/delete/TimKiemNCCView";
+    }
+    
     @GetMapping("/managencc/delete/{id}")
     public String getDelete(@PathVariable(name="id") int id,Model model){
         Optional<NhaCungCap> nhaCungCap = nhaCungCapDAO.findById(id);
@@ -78,6 +82,6 @@ public class QuanLyNccController {
     @PostMapping("/managencc/delete/{id}")
     public String postDelete(@PathVariable(name="id") int id,@ModelAttribute NhaCungCap nhaCungCap){
         nhaCungCapDAO.deleteById(id);;
-        return "redirect:/managencc/edit/TimKiemNCCView";
+        return "redirect:/managencc/delete/search";
     }
 }

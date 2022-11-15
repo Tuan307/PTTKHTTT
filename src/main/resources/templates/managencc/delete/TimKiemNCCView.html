@@ -14,19 +14,13 @@
       <input class="form-control" type="text" name="keyword" placeholder="name" />
        <br/>
       <br />
-      <button class="btn btn-outline-secondary" type="submit">search</button>
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+      <br/>
+
       <br />
     </form>
+
     <br/>
-    <br/>
-   <a th:href="@{/managencc}"><button type="submit">Hủy</button></a>
-  <br/>
-    <br/>
-  
-    
-    <br/>
-    
-    
     <table class="table" border="1px">
       <tr>
         <th scope="col">STT</th>
@@ -42,9 +36,13 @@
         <td th:utext="${item.diachi}"></td>
         <td th:utext="${item.email}"></td>
         <td th:utext="${item.sodienthoai}"></td>
-        <td><a th:href="@{'/managencc/edit/'+ ${item.id}}">Edit</a></td>   
+        <td><a th:href="@{'/managencc/delete/'+ ${item.id}}">Delete</a></td>
+         
       </tr>
     
+
     </table>
-    </body>
+    <br/>
+    
+  </body>
 </html>

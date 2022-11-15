@@ -32,37 +32,38 @@ public class NhapTrangPhuc {
     private NhaCungCapDAO nhaCungCapDAO;
     @Autowired
     private HoaDonNhapDAO hoaDonNhapDAO;
+    
     @GetMapping("/nhaptp/SearchNcc")
     public String getSearchNcc(@Param("keyword") String keyword,Model model/*HttpSession session*/){
 //    	ThanhVien tv = (ThanhVien) session.getAttribute("tv");
 //    	if(tv == null) return "redirect:/login";
-        if(keyword == null) return "managencc/edit/TimKiemNCCView" ;
+        if(keyword == null) return "nhaptrangphuc/TimKiemNCCView" ;
         List<NhaCungCap> listNcc = nhaCungCapDAO.findAllByTenContaining(keyword);
         if(listNcc.isEmpty()) return "error";
         model.addAttribute("listNcc", listNcc);
-        return "managencc/edit/TimKiemNCCView";
+        return "nhaptrangphuc/TimKiemNCCView";
     }
     @GetMapping("/nhaptp/ncc/{id}")
     public String getSearchPhim(@PathVariable(name="id") int id,@Param("keyword") String keyword,Model model){
-        if(keyword == null) return "TimKiemTrangPhuc" ;
+        if(keyword == null) return "nhaptrangphuc/TimKiemTrangPhuc" ;
         keyword = "%"+keyword+"%";
         List<TrangPhuc> listPhim = trangPhucDAO.getAllByNcc(id, keyword.toString());
         if(listPhim.isEmpty()) return "error";
         model.addAttribute("listPhim",listPhim);
         model.addAttribute("id",id);
-        return "TimKiemTrangPhuc";
+        return "nhaptrangphuc/TimKiemTrangPhuc";
     }
     @GetMapping("/nhaptp/{nccId}/{tpId}")
     String getNhapTP(@PathVariable("tpId") int id, Model model){
         Optional<TrangPhuc> tp = trangPhucDAO.findById(id);
         if(tp.isEmpty()) return "error";
         model.addAttribute("tp", tp.get()); 
-        return "nhaptp";
+        return "nhaptrangphuc/nhaptp";
     }
     @PostMapping("/nhaptp/{nccId}/{tpId}")
     String postNhapPhim(@PathVariable("nccId") int nccId,@PathVariable("tpId") int tpId, @ModelAttribute("count") int count){
         Optional<TrangPhuc> tp = trangPhucDAO.findById(tpId);
-        if(tp.isEmpty()) return "NotFoundView";
+        if(tp.isEmpty()) return "error";
         tp.get().setSoluongconchothue(tp.get().getSoluongconchothue()+count);
         trangPhucDAO.save(tp.get());
         Optional<NhaCungCap> ncc = nhaCungCapDAO.findById(nccId);
