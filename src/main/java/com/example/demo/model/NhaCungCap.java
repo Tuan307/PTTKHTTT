@@ -5,7 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+import lombok.Data;
+
 @Entity(name = "Nhacungcap")
+@Data
 public class NhaCungCap {
 
 	@Id
@@ -23,36 +27,9 @@ public class NhaCungCap {
 		this.sodienthoai = sodienthoai;
 		this.email = email;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getTen() {
-		return ten;
-	}
-	public void setTen(String ten) {
-		this.ten = ten;
-	}
-	public String getDiachi() {
-		return diachi;
-	}
-	public void setDiachi(String diachi) {
-		this.diachi = diachi;
-	}
-	public String getSodienthoai() {
-		return sodienthoai;
-	}
-	public void setSodienthoai(String sodienthoai) {
-		this.sodienthoai = sodienthoai;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	@OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "tblDiaChiId", referencedColumnName = "id")
+//    private DiaChi diaChi;
 	public NhaCungCap() {
 		super();
 	}

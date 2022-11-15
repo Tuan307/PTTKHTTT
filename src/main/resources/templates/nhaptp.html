@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <title>search ncc</title>
+ 
+
+  </head>
+  <body>
+
+    <h3>Nhập trang phuc</h3>
+    <table class="table">
+      <tr>
+        <th scope="col">Tên</th>
+        <th scope="col">Gia</th>
+        <th scope="col">Xuat xu</th>
+        <th scope="col">Mo ta</th>
+      </tr>      <tr>
+        <td th:utext="${tp.ten}" ></td>
+        <td th:utext="${tp.gia}" ></td>
+        <td th:utext="${tp.xuatxu}" ></td>
+        <td th:utext="${tp.mota}" ></td>
+      </tr>
+ <form action = "" method="post">
+ <label> Số lượng:  </label>
+ <input name = "count" type="number">
+ <button type="submit" > Nhập phim </button>
+ </form>
+    </table>
+  </body>
+</html>

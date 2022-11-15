@@ -35,15 +35,16 @@ public class QuanLyNccController {
     }
     @PostMapping("/managencc/add")
     public String postAddManage(@ModelAttribute NhaCungCap nhaCungCap){
+    	
         nhaCungCapDAO.save(nhaCungCap);
         return "redirect:/managencc";
     }
     @GetMapping("/managencc/edit/search")
     public String getEditSearch(@Param("keyword") String keyword,Model model){
-        if(keyword == null) return "managencc/edit/searchncc" ;
+        if(keyword == null) return "managencc/edit/TimKiemNCCView" ;
         List<NhaCungCap> listNcc = nhaCungCapDAO.findAllByTenContaining(keyword);
         model.addAttribute("listNcc", listNcc);
-        return "managencc/edit/TimKiemNCCView.html";
+        return "managencc/edit/TimKiemNCCView";
     }
     @GetMapping("/managencc/edit/{id}")
     public String getEdit(@PathVariable(name="id") int id,Model model){
@@ -77,6 +78,6 @@ public class QuanLyNccController {
     @PostMapping("/managencc/delete/{id}")
     public String postDelete(@PathVariable(name="id") int id,@ModelAttribute NhaCungCap nhaCungCap){
         nhaCungCapDAO.deleteById(id);;
-        return "redirect:/managencc/edit/search";
+        return "redirect:/managencc/edit/TimKiemNCCView";
     }
 }

@@ -5,11 +5,13 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.*;
 import javax.persistence.Id;
-
+import javax.persistence.Inheritance;
 
 import lombok.Data;
 @Entity(name = "tblThanhVien")
+@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 @Data
 public class ThanhVien {
     @Id
@@ -24,6 +26,9 @@ public class ThanhVien {
     private String email;
     private String sdt;
 	
+//    @ManyToOne
+//    @JoinColumn(name = "tblDiaChiId")
+//    private DiaChi diaChi;
     
     public ThanhVien(int id, String ten, String userName, String address, String password, Date dob,String vitri, String email,
 			String sdt) {
