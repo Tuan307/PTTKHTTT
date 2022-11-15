@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +24,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("/")
-	public String doLogin(@ModelAttribute AuthDTO authDTO) {
+	public String doLogin(@ModelAttribute AuthDTO authDTO, HttpSession session) {
 		ThanhVien thanhVien = thanhVienDAO.findByUserName(authDTO.getUserName());
 		if(thanhVien == null) {
 			return "error";
@@ -30,7 +32,7 @@ public class LoginController {
 		if(!authDTO.getPassword().equals(thanhVien.getPassword())) {
 			return "error";
 		}
-		
+//		session.setAttribute("tv", thanhVien);
 		return "NhanvienquanlyView";
 	}
 }

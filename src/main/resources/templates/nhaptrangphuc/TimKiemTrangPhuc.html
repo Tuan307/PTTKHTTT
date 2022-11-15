@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <title>search ncc</title>
+ 
+
+  </head>
+  <body>
+
+    <h3>Tìm kiếm trang phục</h3>
+    <form action="" method="get" >
+      <div class="input-group">
+        <span class="input-group-text" id="inputGroup-sizing-default">Tên:</span>
+      <input class="form-control" type="text" name="keyword" placeholder="name" />
+      <br />
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+      <br />
+    </form>
+    <table class="table">
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Xuất xứ</th>
+        <th scope="col">Mô tả</th>
+      </tr>
+      <th:block th:each="item : ${listPhim}">
+      <tr>
+        <td scope="row" th:utext="${item.id}"></td>
+        <td th:utext="${item.ten}" ></td>
+        <td th:utext="${item.gia}" ></td>
+        <td th:utext="${item.xuatxu}" ></td>
+        <td th:utext="${item.mota}" ></td>
+        <td><a th:href="@{/nhaptp/{nccId}/{id}(id=${item.id}, nccId=${id})}"><button type="button" class="btn btn-outline-secondary" style="color: green;">Nhập tp</button></a></td>
+      </tr>
+    </th:block>
+
+    </table>
+  </body>
+</html>
